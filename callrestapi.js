@@ -135,6 +135,40 @@ function deleteGame(id) {
   }
 }
 
+function getByIdGame() {
+  const gameId = $('#game_id').val(); 
+
+  if (!gameId) {
+    alert("Por favor ingresa un ID de juego.");
+    return;
+  }
+
+  $.ajax({
+    url: url + '/' + gameId, 
+    type: 'GET', 
+    contentType: 'application/json',
+    success: function (data) {
+      console.log(data);
+      
+      var gameDetails = `
+        <h3>Detalles del Videojuego</h3>
+        <p><strong>ID:</strong> ${data.game.id}</p>
+        <p><strong>Nombre:</strong> ${data.game.name}</p>
+        <p><strong>Año de Lanzamiento:</strong> ${data.game.launch_year}</p>
+        <p><strong>Plataformas:</strong> ${data.game.platforms}</p>
+        <p><strong>Género:</strong> ${data.game.genre}</p>
+        <p><strong>Desarrolladores:</strong> ${data.game.developers}</p>
+        <p><strong>Modos de Juego:</strong> ${data.game.modes}</p>
+      `;
+
+      $('#resultado').html(gameDetails);
+    },
+    error: function (err) {
+      $('#resultado').html('Error: ' + JSON.stringify(err.responseJSON));
+    }
+  });
+}
+
 function resetForm() {
   console.log('Form reset');
   $('#name').val('');
