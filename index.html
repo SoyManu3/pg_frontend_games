@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Videojuegos API</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h2>Consumo de REST-API: Videojuegos</h2>
+
+    <div class="form-container">
+      <div>
+        <label>Nombre del juego:</label>
+        <input type="text" id="name" />
+      </div>
+
+      <div>
+        <label>Año de lanzamiento:</label>
+        <input type="number" id="launch_year" />
+      </div>
+
+      <div>
+        <label>Plataformas:</label>
+        <input type="text" id="platforms" placeholder="Ej: PS5, PC, Xbox" />
+      </div>
+
+      <div>
+        <label>Género:</label>
+        <input type="text" id="genre" />
+      </div>
+
+      <div>
+        <label>Desarrolladores:</label>
+        <input type="text" id="developers" />
+      </div>
+
+      <div>
+        <label>Modos de juego:</label>
+        <input type="text" id="modes" placeholder="Ej: Single-player, Multiplayer" />
+      </div>
+
+      <div class="btn-container">
+        <button onclick="postGames()">Agregar videojuego (POST)</button>
+        <button onclick="getGames()">Obtener videojuegos (GET)</button>
+        <button onclick="updateGame()">Actualizar videojuego (PUT)</button>
+      </div>
+    </div>
+
+    <div id="resultado"></div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="callrestapi.js"></script>
+  </body>
+</html>
